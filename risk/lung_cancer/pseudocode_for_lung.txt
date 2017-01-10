@@ -1,0 +1,37 @@
+Variables
+	- should already be in patient history
+		- age 
+		- gender
+		- BMI (calculated from height and weight)
+		- var_name copd: personal history of COPD, emphysma or chronic bronchitis (SNOMED codes 13645005, 87433001, 63480004): yes = 1, no = 0
+		- var_name personal_cancer: personal history of any cancer (SNOMED codes 269466003, 1000000, 254837009, 363406005, 1000001, 363402007, 72900001, 363349007, 315058005, 363518003, 93143009, 93870000, 363358000, 363495004, OTCANCER, 363443007, 363418001, 399068003, 254582000, 372130007, 363478007, UNCANCER, 371973000)
+		- var_name family_cancer: family history of lung cancer (SNOMED code 63480004)
+		- race/ethnicity, var_names (0 for no 1 for yes)
+			- white: White, Not Hispanic or Latino
+			- black: Black or African-American
+			- hispanic: Hispanic or Latino
+			- asian: Asian
+			- pac_islander: Native Hawaiian or Other Pacific Islander
+			- native_amer: American Indian or Alaska Native
+	- will need to be collected
+		- current_smoker: yes 1, no 0
+		- daily_cigarettes: if current or former smoker, average number of cigarettes smoked per day (or used to smoke per day). For never smoked = 0
+		- years_quit: if former smoker, how many years since quit (if current or never smoked = 0)
+		- years_smoked: if current or former smoker, how many years smoked (if never smoked = 0)
+		- level of education 	
+			1 = less than high school graduate
+			2 = high school graduate
+			3 = post high school training
+			4 = some college
+			5 = college graduate
+			6 = postgraduate/professional
+	- model_constant = -7.02198
+
+
+formula for calculating risk:
+
+
+smoking_intensity = (((daily_cigarettes/100)^-1) - 4.021541613)
+
+risk = Math.exp(((age - 62) * 0.079597) + ((education - 4) * -0.0879289) + ((27 - BMI) * -0.028948) + (COPD * 0.3457265) + (personal_cancer * 0.4845208) + (family_cancer * 0.5856777) + (white * 0) + (black * 0.3211605) + (hispanic * -0.8203332) + (asian * -0.5241286) + (pac_islander * -1.364379) + (native_amer * 0.952699) + (current_smoker * 2.799727) + (smoking_intensity * -0.1815486) + ((years_smoked - 27) * 0.0305566) + ((years_quit - 8.593417626) * -0.0321362) +  model_constant)
+
