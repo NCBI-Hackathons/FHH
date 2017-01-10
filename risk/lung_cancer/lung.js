@@ -23,3 +23,22 @@ if (lng=='en-US') {
 	lng = 'en';
 };
 
+$(document).ready(function() {
+
+	
+	$('.aradio').buttonset();
+
+	build_required_information_for_personal_history();
+	enable_appropriate_changers();
+	
+	var valid = test_for_any_missing_data();
+		
+	// always show this because we added a disclaimer	
+	if (!valid.age || !valid.race || !valid.ethnicity || !valid.height || 
+			!valid.weight || !valid.current_smoker || !valid.daily_cigarettes || !valid.years_quit || !valid.years_smoked || !valid.education) {
+		get_required_info_dialog(valid); 
+	};
+	
+	load_all_data_and_calculate_score();
+	
+});
