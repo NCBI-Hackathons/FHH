@@ -10,12 +10,18 @@ var score = {
 	'pac_islander':0,
 	'native_amer':0,
 	'current_smoker':0,
-	'daily_cigarettes':0,
+	'smoking_intensity':0,
 	'years_quit':0,
 	'years_smoked':0,
 	'education':0,
 	'total':0
 };
+
+var smoking_intensity = {
+	'daily_cigarettes' : 0,
+	'total' : 0,
+};
+
 
 // get lng and set to variable. used to open correct pdf //
 var lng = window.i18n.lng();
@@ -42,3 +48,8 @@ $(document).ready(function() {
 	load_all_data_and_calculate_score();
 	
 });
+
+
+function calculate_smoking_intensity() {
+	smoking_intensity.total = (((daily_cigarettes/100)^-1) - 4.021541613)
+}
