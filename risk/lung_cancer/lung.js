@@ -16,3 +16,10 @@ var score = {
 	'education':0,
 	'total':0
 };
+
+// get lng and set to variable. used to open correct pdf //
+var lng = window.i18n.lng();
+if (lng=='en-US') {
+	lng = 'en';
+};
+
