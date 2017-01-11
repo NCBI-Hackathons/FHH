@@ -62,7 +62,22 @@ function build_required_information_for_personal_history() {
 }
 
 
+function enable_appropriate_changers() {
+// most of these should not be changed once entered.  
+// Enable these if you want the user to be able to change these values on the fly.
 
+// Also the ones that need to be added (smoking info) will be enabled
+
+//	enable_changing_age();
+//	enable_changing_height();
+//	enable_changing_weight();
+	enable_changing_current_smoker();
+	enable_changing_years_quit();
+	enable_changing_years_smoked();
+	enable_changing_education();
+	enable_changing_daily_cigarettes();
+
+}
 
 //function calculate_smoking_intensity() {
 //	smoking_intensity.total = (((daily_cigarettes/100)^-1) - 4.021541613)
