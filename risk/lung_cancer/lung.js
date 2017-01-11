@@ -1,4 +1,4 @@
-var score = {
+var risk_score = {
 	'age':0,
 	'family_cancer':0,
 	'copd':0,
@@ -50,6 +50,25 @@ $(document).ready(function() {
 });
 
 
-function calculate_smoking_intensity() {
-	smoking_intensity.total = (((daily_cigarettes/100)^-1) - 4.021541613)
+function build_required_information_for_personal_history() {
+	if (personal_information == null) personal_information = new Object();
+	if (personal_information['Health History'] == null) personal_information['Health History'] = [];
+	if (personal_information['father'] == null) personal_information['father'] = {'gender':'MALE'};
+	if (personal_information['mother'] == null)	personal_information['mother'] = {'gender':'FEMALE'};
+	if (personal_information['maternal_grandfather'] == null)	personal_information['maternal_grandfather'] = {'gender':'MALE'};
+	if (personal_information['maternal_grandmother'] == null)	personal_information['maternal_grandmother'] = {'gender':'FEMALE'};
+	if (personal_information['paternal_grandfather'] == null)	personal_information['paternal_grandfather'] = {'gender':'MALE'};
+	if (personal_information['paternal_grandmother'] == null)	personal_information['paternal_grandmother'] = {'gender':'FEMALE'};			
 }
+
+
+
+
+//function calculate_smoking_intensity() {
+//	smoking_intensity.total = (((daily_cigarettes/100)^-1) - 4.021541613)
+//}
+
+
+//function calculate_risk_score() {
+//	risk_score.total = 
+//}
